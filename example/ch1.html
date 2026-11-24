@@ -1,0 +1,128 @@
+<section class="chapter" id="ch1">
+<div class="chapter-band">
+  <div class="cnum">CHAPTER 1</div>
+  <h1>第一章　向量空间与基</h1>
+  <div class="csub">§1.1 子空间　§1.2 基与维数</div>
+</div>
+
+<div class="box info">
+  <div class="lab">【本章导览】</div>
+  <p>这一章只做两件事：先把“对加法、数乘封闭”的集合提炼成<b>子空间</b>，再用<b>基</b>给它装坐标、用<b>维数</b>量它的大小。</p>
+  <p>最重要的结论：$\mathbb{R}^n$ 中 $n$ 个向量构成基，当且仅当以它们为列的矩阵可逆。</p>
+</div>
+
+<h2 class="sec">§1.1　子空间</h2>
+
+<h3>一、三查判据</h3>
+
+<div class="box intuition">
+  <div class="lab">【通俗理解】</div>
+  <p>子空间就是“<b>过原点、且对加法和数乘封闭</b>的一块平直区域”。在 $\mathbb{R}^3$ 中，过原点的直线、过原点的平面、整个空间、以及单点 $\{\mathbf{0}\}$，都是子空间。</p>
+  <p>判断时按顺序查三件事：<b>零向量在不在？加法封闭吗？数乘封闭吗？</b>第一查最快，不含零直接判死。</p>
+</div>
+
+<div class="box keybox">
+  <div class="lab">【定义】子空间</div>
+  <p>设 $W$ 是 $\mathbb{R}^n$ 的非空子集。若</p>
+  <ol class="tight">
+    <li>$\mathbf{0}\in W$；</li>
+    <li>对任意 $\mathbf{u},\mathbf{v}\in W$、$\alpha,\beta\in\mathbb{R}$，都有 $\alpha\mathbf{u}+\beta\mathbf{v}\in W$，</li>
+  </ol>
+  <p>则称 $W$ 是 $\mathbb{R}^n$ 的<b>子空间</b>。</p>
+</div>
+
+<div class="ex"><span class="exlab">【例1】</span> 证明 $W=\left\{\begin{bmatrix}x\\y\\z\end{bmatrix}:x+2y-z=0\right\}$ 是子空间。</div>
+<div class="box solution">
+  <div class="lab">【解】</div>
+  <p><b>零：</b>$0+2\cdot0-0=0$，所以 $\mathbf{0}\in W$。</p>
+  <p><b>线性组合：</b>若 $\mathbf{u},\mathbf{v}\in W$，则 $u_1+2u_2-u_3=0$，$v_1+2v_2-v_3=0$。对 $\alpha\mathbf{u}+\beta\mathbf{v}$ 检验同一表达式：</p>
+  <div class="eq">$$(\alpha u_1+\beta v_1)+2(\alpha u_2+\beta v_2)-(\alpha u_3+\beta v_3)=\alpha\cdot0+\beta\cdot0=0.$$</div>
+  <p>所以 $W$ 对线性组合封闭，是子空间。</p>
+</div>
+
+<div class="ex"><span class="exlab green">【练习1】</span> 判断 $S=\{A\in M_2(\mathbb{R}):\det A=1\}$ 是否为子空间。</div>
+<div class="box answer">
+  <div class="lab">【答案】</div>
+  <p>不是。零矩阵的行列式为 $0\ne1$，所以 $\mathbf{0}\notin S$，第一查就失败。</p>
+</div>
+
+<h2 class="sec">§1.2　基与维数</h2>
+
+<h3>一、基的定义</h3>
+
+<div class="box keybox">
+  <div class="lab">【定义】基与维数</div>
+  <p>设 $\mathbf{u}_1,\dots,\mathbf{u}_k$ 是子空间 $W$ 中的向量。若它们</p>
+  <ol class="tight">
+    <li><b>线性无关</b>，且</li>
+    <li><b>张成</b> $W$，即 $W=\operatorname{Span}\{\mathbf{u}_1,\dots,\mathbf{u}_k\}$，</li>
+  </ol>
+  <p>则称它们构成 $W$ 的一组<b>基</b>；基中向量的个数 $k$ 称为 $W$ 的<b>维数</b>，记作 $\dim W$。</p>
+</div>
+
+<div class="box intuition">
+  <div class="lab">【一句话】</div>
+  <p><b>基 = 不多不少的一套原料。</b>“张成”保证够用，“无关”保证没有多余。少一个拼不全，多一个有人白拿工资。</p>
+</div>
+
+<div class="box keybox">
+  <div class="lab">【定理】$n$ 个向量何时构成 $\mathbb{R}^n$ 的基</div>
+  <p>设 $\mathbf{a}_1,\dots,\mathbf{a}_n\in\mathbb{R}^n$，$A=[\mathbf{a}_1\ \cdots\ \mathbf{a}_n]$。则下列命题等价：</p>
+  <ol class="tight">
+    <li>$A$ 可逆；</li>
+    <li>$\mathbf{a}_1,\dots,\mathbf{a}_n$ 线性无关；</li>
+    <li>$\mathbf{a}_1,\dots,\mathbf{a}_n$ 张成 $\mathbb{R}^n$；</li>
+    <li>它们构成 $\mathbb{R}^n$ 的基。</li>
+  </ol>
+</div>
+
+<div class="box proof">
+  <div class="lab">【证明思路】</div>
+  <p>$A\mathbf{x}=\mathbf{b}$ 就是把 $A$ 的列按 $\mathbf{x}$ 的系数拼成 $\mathbf{b}$。于是“对每个 $\mathbf{b}$ 都有解”就是“张成”；“解唯一”就是“无关”；“可逆”就是“对每个 $\mathbf{b}$ 都有唯一解”。三者是同一件事的三种说法。</p>
+</div>
+
+<h3>二、坐标</h3>
+
+<div class="box keybox">
+  <div class="lab">【定理】基下坐标唯一</div>
+  <p>若 $\mathbf{u}_1,\dots,\mathbf{u}_n$ 是 $\mathbb{R}^n$ 的基，则每个 $\mathbf{x}\in\mathbb{R}^n$ 都能<b>唯一</b>写成</p>
+  <div class="eq">$$\mathbf{x}=\alpha_1\mathbf{u}_1+\cdots+\alpha_n\mathbf{u}_n.$$</div>
+  <p>令 $U=[\mathbf{u}_1\ \cdots\ \mathbf{u}_n]$，则坐标向量 $\boldsymbol{\alpha}=U^{-1}\mathbf{x}$。</p>
+</div>
+
+<div class="ex"><span class="exlab">【例2】</span> 验证 $\begin{bmatrix}1\\1\end{bmatrix},\begin{bmatrix}1\\-1\end{bmatrix}$ 是 $\mathbb{R}^2$ 的基，并求 $\begin{bmatrix}3\\1\end{bmatrix}$ 的坐标。</div>
+<div class="box solution">
+  <div class="lab">【解】</div>
+  <p>以它们为列的矩阵行列式为 $-2\ne0$，故可逆，构成基。</p>
+  <p>设 $\alpha\begin{bmatrix}1\\1\end{bmatrix}+\beta\begin{bmatrix}1\\-1\end{bmatrix}=\begin{bmatrix}3\\1\end{bmatrix}$，即 $\alpha+\beta=3$，$\alpha-\beta=1$。解得 $\alpha=2$，$\beta=1$。所以</p>
+  <div class="eq">$$\begin{bmatrix}3\\1\end{bmatrix}=2\begin{bmatrix}1\\1\end{bmatrix}+1\begin{bmatrix}1\\-1\end{bmatrix}.$$</div>
+</div>
+
+<div class="ex"><span class="exlab green">【练习2】</span> 验证 $\begin{bmatrix}1\\2\end{bmatrix},\begin{bmatrix}3\\4\end{bmatrix}$ 是 $\mathbb{R}^2$ 的基，并求 $\begin{bmatrix}5\\6\end{bmatrix}$ 的坐标。</div>
+<div class="box answer">
+  <div class="lab">【答案】</div>
+  <p>行列式 $1\cdot4-2\cdot3=-2\ne0$，构成基。解 $\alpha+3\beta=5$，$2\alpha+4\beta=6$，得 $\alpha=-1$，$\beta=2$。坐标为 $(-1,2)^{T}$。</p>
+</div>
+
+<div class="box warn">
+  <div class="lab">【易错提醒】</div>
+  <p>“$n$ 个向量构成 $\mathbb{R}^n$ 的基”与“$n$ 个向量无关”等价，但这只对<b>$n$ 个向量、在 $\mathbb{R}^n$ 中</b>成立。个数不是 $n$ 时，必须分别检查“无关”和“张成”。</p>
+</div>
+
+<h2 class="sec summary">本章小结</h2>
+
+<table>
+  <tr><th style="width:26%">概念</th><th>定义 / 公式</th><th style="width:32%">怎么用</th></tr>
+  <tr><td>子空间</td><td>含 $\mathbf{0}$，对线性组合封闭</td><td>三查：零、加、乘</td></tr>
+  <tr><td>基</td><td>线性无关 + 张成</td><td>给子空间装坐标</td></tr>
+  <tr><td>维数</td><td>基中向量个数</td><td>量空间大小</td></tr>
+  <tr><td>$\mathbb{R}^n$ 的基</td><td>$n$ 个向量，$\det\ne0$</td><td>判断可逆、求坐标</td></tr>
+</table>
+
+<div class="box note">
+  <div class="lab">【一页纸记忆】</div>
+  <p>① 子空间三查：零向量、加法、数乘；不含零直接判死。</p>
+  <p>② 基 = 无关 + 张成；基下坐标唯一。</p>
+  <p>③ $\mathbb{R}^n$ 中 $n$ 个向量构成基 $\iff$ 矩阵可逆 $\iff\det\ne0$。</p>
+</div>
+</section>

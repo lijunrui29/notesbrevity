@@ -1,0 +1,12 @@
+{
+  "title": "笔记精简 · 示例讲义",
+  "subtitle": "向量空间、基与维数 · 内积与正交",
+  "header": "笔记精简",
+  "author": "notesbrevity",
+  "output": "example.pdf",
+  "files": [
+    "front.html",
+    "ch1.html",
+    "ch2.html"
+  ]
+}

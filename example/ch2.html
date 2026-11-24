@@ -1,0 +1,110 @@
+<section class="chapter" id="ch2">
+<div class="chapter-band">
+  <div class="cnum">CHAPTER 2</div>
+  <h1>第二章　内积与正交</h1>
+  <div class="csub">§2.1 内积与范数　§2.2 正交投影</div>
+</div>
+
+<div class="box info">
+  <div class="lab">【本章导览】</div>
+  <p>上一章只有“加法、数乘”，没有长度和角度。这一章装上<b>内积</b>，于是有了范数、距离、垂直，也有了投影。</p>
+  <p>最大的福利：<b>在标准正交基下，坐标就是内积</b>，投影不需要解方程。</p>
+</div>
+
+<h2 class="sec">§2.1　内积与范数</h2>
+
+<h3>一、定义与基本性质</h3>
+
+<div class="box keybox">
+  <div class="lab">【定义】内积与范数</div>
+  <p>设 $\mathbf{u},\mathbf{v}\in\mathbb{R}^n$。定义</p>
+  <div class="eq">$$\langle\mathbf{u},\mathbf{v}\rangle=\mathbf{u}^{T}\mathbf{v}=u_1v_1+\cdots+u_nv_n,\qquad
+  \|\mathbf{u}\|=\sqrt{\langle\mathbf{u},\mathbf{u}\rangle}.$$</div>
+  <p>$\langle\mathbf{u},\mathbf{v}\rangle$ 是一个数；$\|\mathbf{u}\|$ 是长度。若 $\langle\mathbf{u},\mathbf{v}\rangle=0$，称 $\mathbf{u}$ 与 $\mathbf{v}$ <b>正交</b>。</p>
+</div>
+
+<div class="box keybox">
+  <div class="lab">【定理】Cauchy–Schwarz 不等式</div>
+  <p>对任意 $\mathbf{u},\mathbf{v}\in\mathbb{R}^n$，</p>
+  <div class="eq">$$|\langle\mathbf{u},\mathbf{v}\rangle|\le\|\mathbf{u}\|\,\|\mathbf{v}\|,$$</div>
+  <p>等号成立当且仅当 $\mathbf{u},\mathbf{v}$ 线性相关。</p>
+</div>
+
+<div class="box proof">
+  <div class="lab">【证明思路】</div>
+  <p>考虑 $\|\mathbf{u}-t\mathbf{v}\|^2\ge0$，取 $t=\dfrac{\langle\mathbf{u},\mathbf{v}\rangle}{\|\mathbf{v}\|^2}$，化简即得。等号意味着 $\mathbf{u}-t\mathbf{v}=\mathbf{0}$，即两者相关。</p>
+</div>
+
+<div class="ex"><span class="exlab">【例1】</span> 设 $\mathbf{u}=(1,2,2)^{T}$，$\mathbf{v}=(2,-1,0)^{T}$。求内积、范数，并判断是否正交。</div>
+<div class="box solution">
+  <div class="lab">【解】</div>
+  <p>$\langle\mathbf{u},\mathbf{v}\rangle=2-2+0=0$，所以正交。$\|\mathbf{u}\|=\sqrt{1+4+4}=3$，$\|\mathbf{v}\|=\sqrt{4+1}=\sqrt5$。</p>
+  <p>由于正交，勾股定理成立：$\|\mathbf{u}+\mathbf{v}\|^2=\|\mathbf{u}\|^2+\|\mathbf{v}\|^2=9+5=14$。</p>
+</div>
+
+<div class="ex"><span class="exlab green">【练习1】</span> 设 $\mathbf{u}=(1,1,1)^{T}$，$\mathbf{v}=(1,-1,0)^{T}$。求内积、范数与夹角。</div>
+<div class="box answer">
+  <div class="lab">【答案】</div>
+  <p>$\langle\mathbf{u},\mathbf{v}\rangle=1-1+0=0$，夹角 $90^\circ$。$\|\mathbf{u}\|=\sqrt3$，$\|\mathbf{v}\|=\sqrt2$。</p>
+</div>
+
+<h2 class="sec">§2.2　正交投影</h2>
+
+<h3>一、标准正交基</h3>
+
+<div class="box keybox">
+  <div class="lab">【定义】标准正交基</div>
+  <p>子空间 $W$ 的基 $\mathbf{u}_1,\dots,\mathbf{u}_k$ 若满足 $\langle\mathbf{u}_i,\mathbf{u}_j\rangle=0$（$i\ne j$）且 $\|\mathbf{u}_i\|=1$，称为<b>标准正交基</b>。</p>
+  <p>此时对任意 $\mathbf{v}\in W$，</p>
+  <div class="eq">$$\mathbf{v}=\langle\mathbf{v},\mathbf{u}_1\rangle\mathbf{u}_1+\cdots+\langle\mathbf{v},\mathbf{u}_k\rangle\mathbf{u}_k.$$</div>
+</div>
+
+<div class="box intuition">
+  <div class="lab">【通俗理解】</div>
+  <p>一般基下求坐标要解方程组；标准正交基下只需“<b>逐个投影</b>”——每个系数就是 $\mathbf{v}$ 在对应方向上的分量。就像直角坐标系里，点的 $x$ 坐标就是它往 $x$ 轴上的投影。</p>
+</div>
+
+<div class="box keybox">
+  <div class="lab">【定理】正交投影</div>
+  <p>设 $\mathbf{u}_1,\dots,\mathbf{u}_k$ 是 $W$ 的标准正交基，$\mathbf{z}\in\mathbb{R}^n$。令</p>
+  <div class="eq">$$\mathbf{v}=\sum_{i=1}^{k}\langle\mathbf{z},\mathbf{u}_i\rangle\mathbf{u}_i,\qquad \mathbf{y}=\mathbf{z}-\mathbf{v}.$$</div>
+  <p>则 $\mathbf{v}\in W$，$\mathbf{y}\in W^{\perp}$，且 $\mathbf{v}$ 是 $W$ 中离 $\mathbf{z}$ 最近的点，最短距离为 $\|\mathbf{y}\|$。</p>
+</div>
+
+<div class="ex"><span class="exlab">【例2】</span> 设 $W=\operatorname{Span}\left\{\mathbf{u}=\frac{1}{\sqrt2}\begin{bmatrix}1\\1\\0\end{bmatrix}\right\}$，$\mathbf{z}=\begin{bmatrix}3\\1\\4\end{bmatrix}$。求 $\mathbf{z}$ 在 $W$ 上的投影与最短距离。</div>
+<div class="box solution">
+  <div class="lab">【解】</div>
+  <p>$\mathbf{u}$ 是单位向量。$\langle\mathbf{z},\mathbf{u}\rangle=\frac{3+1}{\sqrt2}=2\sqrt2$，所以</p>
+  <div class="eq">$$\mathbf{v}=2\sqrt2\cdot\frac{1}{\sqrt2}\begin{bmatrix}1\\1\\0\end{bmatrix}=\begin{bmatrix}2\\2\\0\end{bmatrix}.$$</div>
+  <p>$\mathbf{y}=\mathbf{z}-\mathbf{v}=(1,-1,4)^{T}$，最短距离 $\|\mathbf{y}\|=\sqrt{1+1+16}=3\sqrt2$。</p>
+</div>
+
+<div class="ex"><span class="exlab green">【练习2】</span> 设 $W=\left\{\begin{bmatrix}x\\y\\0\end{bmatrix}\right\}$（$xy$ 平面），$\mathbf{z}=(1,2,3)^{T}$。求投影与最短距离。</div>
+<div class="box answer">
+  <div class="lab">【答案】</div>
+  <p>$W$ 的标准正交基是 $\mathbf{e}_1,\mathbf{e}_2$，投影 $\mathbf{v}=(1,2,0)^{T}$，$\mathbf{y}=(0,0,3)^{T}$，最短距离为 $3$。</p>
+</div>
+
+<div class="box warn">
+  <div class="lab">【易错提醒】</div>
+  <p>投影公式 $\sum\langle\mathbf{z},\mathbf{u}_i\rangle\mathbf{u}_i$ <b>只适用于标准正交基</b>。若基只是正交、没有单位化，系数要除以 $\|\mathbf{u}_i\|^2$。</p>
+</div>
+
+<h2 class="sec summary">本章小结</h2>
+
+<table>
+  <tr><th style="width:26%">概念</th><th>定义 / 公式</th><th style="width:32%">怎么用</th></tr>
+  <tr><td>内积</td><td>$\langle\mathbf{u},\mathbf{v}\rangle=\mathbf{u}^{T}\mathbf{v}$</td><td>长度、角度、正交</td></tr>
+  <tr><td>范数</td><td>$\|\mathbf{u}\|=\sqrt{\langle\mathbf{u},\mathbf{u}\rangle}$</td><td>长度与距离</td></tr>
+  <tr><td>正交</td><td>$\langle\mathbf{u},\mathbf{v}\rangle=0$</td><td>勾股定理</td></tr>
+  <tr><td>标准正交基</td><td>两两正交且长度为 $1$</td><td>坐标 $=\langle\mathbf{v},\mathbf{u}_i\rangle$</td></tr>
+  <tr><td>投影</td><td>$\mathbf{v}=\sum\langle\mathbf{z},\mathbf{u}_i\rangle\mathbf{u}_i$</td><td>最佳逼近、最短距离</td></tr>
+</table>
+
+<div class="box note">
+  <div class="lab">【一页纸记忆】</div>
+  <p>① 内积是数；范数是它的平方根；正交是内积为零。</p>
+  <p>② 标准正交基下坐标就是内积，不用解方程。</p>
+  <p>③ 投影 $\mathbf{v}=\sum\langle\mathbf{z},\mathbf{u}_i\rangle\mathbf{u}_i$，$\mathbf{z}-\mathbf{v}\perp W$，$\|\mathbf{z}-\mathbf{v}\|$ 是最短距离。</p>
+</div>
+</section>

@@ -1,0 +1,69 @@
+<!--
+  一章一个文件。章节标题必须放在 .chapter-band 里的 <h1> 中，
+  build.py 靠它生成页眉和 PDF 书签。
+-->
+<section class="chapter" id="ch1">
+<div class="chapter-band">
+  <div class="cnum">CHAPTER 1</div>
+  <h1>第一章　章标题</h1>
+  <div class="csub">§1.1 小节一　§1.2 小节二</div>
+</div>
+
+<div class="box info">
+  <div class="lab">【本章导览】</div>
+  <p>用两三句话说明：这一章研究什么对象、解决什么问题、最重要的结论是什么。</p>
+</div>
+
+<h2 class="sec">§1.1　小节标题</h2>
+
+<h3>一、概念</h3>
+
+<div class="box intuition">
+  <div class="lab">【通俗理解】</div>
+  <p>先用生活化语言或几何画面解释概念，不急着上公式。</p>
+</div>
+
+<div class="box keybox">
+  <div class="lab">【定义】概念名</div>
+  <p>给出完整定义。例如：设 $A$ 是 $m\times n$ 矩阵，若……则称……</p>
+  <div class="eq">$$A\mathbf{x}=\mathbf{0}.$$</div>
+</div>
+
+<div class="box proof">
+  <div class="lab">【证明思路】</div>
+  <p>只写关键想法：为什么这样构造、哪一步用了什么条件。完整形式证明留给 course note。</p>
+</div>
+
+<div class="ex"><span class="exlab">【例1】</span> 给出一个具体、可手算的例子。</div>
+<div class="box solution">
+  <div class="lab">【解】</div>
+  <p>写出步骤。矩阵示例：</p>
+  <div class="eq">$$\begin{bmatrix}1&2\\3&4\end{bmatrix}\begin{bmatrix}x\\y\end{bmatrix}=\begin{bmatrix}5\\6\end{bmatrix}.$$</div>
+</div>
+
+<div class="ex"><span class="exlab green">【练习1】</span> 给一道巩固题。</div>
+<div class="box answer">
+  <div class="lab">【答案】</div>
+  <p>给出答案与关键步骤，方便遮住自测。</p>
+</div>
+
+<div class="box warn">
+  <div class="lab">【易错提醒】</div>
+  <p>列出本节最常见的 1–3 个坑。</p>
+</div>
+
+<h2 class="sec summary">本章小结</h2>
+
+<table>
+  <tr><th style="width:26%">概念</th><th>定义 / 公式</th><th style="width:32%">怎么用</th></tr>
+  <tr><td>概念 A</td><td>公式或一句话定义</td><td>典型题型</td></tr>
+  <tr><td>概念 B</td><td>公式或一句话定义</td><td>典型题型</td></tr>
+</table>
+
+<div class="box note">
+  <div class="lab">【一页纸记忆】</div>
+  <p>① 最重要的一条结论。</p>
+  <p>② 第二个必背公式。</p>
+  <p>③ 一个常见反例或适用条件。</p>
+</div>
+</section>
