@@ -1,0 +1,2 @@
+# notesbrevity
+distill lecture notes
