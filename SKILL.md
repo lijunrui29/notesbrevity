@@ -8,8 +8,8 @@ description: Turn lecture notes or English course notes into a polished Chinese 
 Build a print-ready Chinese lecture-note PDF from HTML fragments using
 **HTML + KaTeX + headless Chrome + PyMuPDF**. No LaTeX install, no network.
 
-The skill directory (`$SKILL`) contains a working engine, a stylesheet, templates,
-a vendored KaTeX, and a two-chapter demo.
+Let `SKILL_DIR` be the directory containing this `SKILL.md`. It contains a working
+engine, a stylesheet, templates, a vendored KaTeX, and a two-chapter demo.
 
 ## When to use
 
@@ -22,9 +22,9 @@ a vendored KaTeX, and a two-chapter demo.
 
 Read these before writing:
 
-1. `$SKILL/templates/style.css` — colours, boxes, page rules.
-2. `$SKILL/templates/chapter.html` — the exact section skeleton.
-3. `$SKILL/example/example.pdf` — what good output looks like.
+1. `$SKILL_DIR/templates/style.css` — colours, boxes, page rules.
+2. `$SKILL_DIR/templates/chapter.html` — the exact section skeleton.
+3. `$SKILL_DIR/example/example.pdf` — what good output looks like.
 
 If the user has an existing lecture PDF in the same style, match its structure
 and tone; do not redesign it.
@@ -33,8 +33,8 @@ and tone; do not redesign it.
 
 ```bash
 mkdir mynotes
-cp "$SKILL/templates/front.html" mynotes/
-cp "$SKILL/templates/chapter.html" mynotes/
+cp "$SKILL_DIR/templates/front.html" mynotes/
+cp "$SKILL_DIR/templates/chapter.html" mynotes/
 ```
 
 Create `mynotes/notes.json`:
@@ -131,13 +131,13 @@ Every chapter ends with:
 ## 6. Build
 
 ```bash
-python "$SKILL/build.py" mynotes
+python "$SKILL_DIR/build.py" mynotes
 ```
 
 To build the bundled demo:
 
 ```bash
-python "$SKILL/build.py" "$SKILL/example"
+python "$SKILL_DIR/build.py" "$SKILL_DIR/example"
 ```
 
 Output goes to `mynotes/<output>`.
